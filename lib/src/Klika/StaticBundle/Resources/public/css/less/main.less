@@ -1,0 +1,944 @@
+@import url('variables.less');
+@import url('mixins.less');
+
+/*  BASE (redefinición de elementos html) */
+body {
+	.texto-base;
+	background-color: #EFEFEF;
+}
+
+h1 {
+	.titulos (20px, 700, @rosa, normal);
+}
+
+h2 {
+	.titulos (16px, 700, @rosa, normal);
+}
+
+h3 {
+	.titulos (14px, 700, @rosa, normal);
+}
+
+h4 {
+	.titulos (14px, 700, @morado, normal);
+}
+
+ul {
+	margin: 0px 0px @espacio 0px;
+	padding: 0px;
+	list-style: none;
+
+	li {
+		margin: 0px 0px 5px 0px;
+
+		ul {
+			padding-left: 20px;
+		}
+	}
+}
+
+p {
+	margin: 0px 0px @espacio 0px;
+}
+
+a {
+	.enlaces;
+}
+
+hr {
+	margin-top: @espacio;
+	margin-bottom: @espacio;
+}
+
+input,
+select,
+textarea {
+	box-shadow: none !important;
+	border: 1px solid @gris-claro !important;
+	resize: none;
+
+	&:focus {
+		border-color: @gris-claro;
+		outline: 0;
+		-webkit-box-shadow: none !important;
+		box-shadow: none !important;
+	}
+
+	&.form-control {
+		color: @morado;
+
+		&::-webkit-input-placeholder {
+			color: @gris-claro;
+
+			&:hover,
+			&:focus {
+				color: @gris-claro;
+			}
+		}
+	}
+}
+
+select,
+input [type="radio"],
+input [type="checkbox"] {
+	cursor: pointer;
+}
+
+label {
+	font-weight: @font-weight-base;
+	cursor: pointer;
+}
+
+button {
+	.botones;
+
+	&.btn {
+		.botones;
+	}
+}
+
+/* Redefinicion Estilos Bootstrap */
+.table {
+	border: 0px;
+
+	tr {
+		th,
+		td {
+			padding-bottom: @espacio !important;
+			border: 0px !important;
+
+			&:last-child {
+				padding-bottom: 8px !important;
+			}
+		}
+	}
+}
+
+.input-sm {
+	font-size: 14px;
+}
+
+.table-responsive {
+	border: 0px;
+}
+
+.popover {
+	p {
+		margin-bottom: 5px;
+		font-size: 12px;
+	}
+}
+
+.btn-toolbar {
+	.btn-group {
+		margin-bottom: @espacio;
+	}
+}
+
+.pagination {
+	margin-top: 0px;
+
+	.active {
+		a {
+			background-color: @rosa-claro;
+			border-color: @rosa;
+
+			&:hover {
+				background-color: @rosa-claro;
+				border-color: @rosa;
+			}
+		}
+	}
+}
+
+.owl-pagination {
+	.owl-page {
+		span {
+			background-color: @rosa !important;
+		}
+	}
+}
+
+.tooltip {
+	& > .tooltip-inner {
+		background-color: @rosa;
+	}
+
+	& > .tooltip-arrow {
+		border-top-color: @rosa !important;
+	}
+}
+
+a.thumbnail:hover,
+a.thumbnail:focus,
+a.thumbnail.active {
+	border-color: @celeste;
+}
+
+.modal-header {
+	border: 0px;
+}
+
+.checkbox {
+	margin-top: 0px;
+	margin-bottom: 15px;
+}
+
+/* GENERALES (estilos utilizados en varios tpl) */
+.container iframe 		{ width: 100%; 															}
+.contenido 				{ padding-top: 30px; padding-bottom: 30px; background-color: @blanco; 	}
+.img-responsive-max		{ width: 100%; 															}
+.img-responsive-center	{ margin: 0 auto; 														}
+.relative 				{ position: relative; 													}
+.absolute 				{ position: absolute; 													}
+.sin-margin				{ margin: 0px;	 														}
+.sin-padding 			{ padding: 0px; 														}
+a.block 				{ display: block;														}
+.bold 					{ font-weight: 700;														}
+.pointer 				{ cursor: pointer;														}
+.vertical-center 		{ vertical-align: middle;												}
+.tachado 				{ text-decoration: line-through;										}
+.underline 				{ text-decoration: underline; 											}
+.rosa 					{ color: @rosa;															}
+.morado 				{ color: @morado;  														}
+
+.boton-registrate {
+	.botones;
+	.botones > .icono ('/bundles/klikastatic/imagenes/boton-registrate.png', right, -6px);
+}
+
+/* rrss */
+ul.rrss {
+	overflow: hidden;
+
+	li {
+		a {
+			display: inline-block;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+
+	&.rrss-header {
+		li {
+			float: right;
+
+			a.facebook {
+				width: 40px;
+				height: 39px;
+				background: url('/bundles/klikastatic/imagenes/rrss/facebook-header.png') no-repeat top left;
+
+				&:hover {
+					background: url('/bundles/klikastatic/imagenes/rrss/facebook-header-hover.png') no-repeat top left;
+				}
+			}
+
+			a.twitter {
+				width: 36px;
+				height: 39px;
+				background: url('/bundles/klikastatic/imagenes/rrss/twitter-header.png') no-repeat top left;
+
+				&:hover {
+					background: url('/bundles/klikastatic/imagenes/rrss/twitter-header-hover.png') no-repeat top left;
+				}
+			}
+
+			a.pinterest {
+				width: 40px;
+				height: 40px;
+				background: url('/bundles/klikastatic/imagenes/rrss/pinterest-header.png') no-repeat top left;
+
+				&:hover {
+					background: url('/bundles/klikastatic/imagenes/rrss/pinterest-header-hover.png') no-repeat top left;
+				}
+			}
+
+			a.instagram {
+				width: 46px;
+				height: 40px;
+				background: url('/bundles/klikastatic/imagenes/rrss/instagram-header.png') no-repeat top left;
+
+				&:hover {
+					background: url('/bundles/klikastatic/imagenes/rrss/instagram-header-hover.png') no-repeat top left;
+				}
+			}
+		}
+	}
+
+	&.rrss-footer {
+		margin-bottom: @espacio;
+
+		li {
+			float: left;
+			margin: 0px 8px 0px 8px;
+
+			&:first-child {
+				margin-left: 0px;
+			}
+			&:last-child {
+				margin-right: 0px;
+			}
+		}
+	}
+}
+
+/* cabecera */
+.logo-cabecera {
+	padding-top: @espacio;
+}
+
+/* buscador */
+.buscador {
+	margin-top: 10px;
+	margin-bottom: @espacio;
+
+	input {
+		border-right: 0px !important;
+	}
+
+	button {
+		.botones (@rosa, @celeste, @blanco, @blanco);
+		border: 1px solid @gris-claro;
+
+		&:hover {
+			color: @celeste;
+			border-left: 0px;
+		}
+	}
+}
+
+/* botones cabecera */
+.botones-cabecera {
+	padding-top: @espacio;
+
+	.boton-cesta {
+		padding-left: 35px;
+
+		.botones (@gris, @morado, none, none);
+		background: url('/bundles/klikastatic/imagenes/cesta-header.png') no-repeat top left;
+
+		&:hover,
+		&:active,
+		&:focus {
+			background: url('/bundles/klikastatic/imagenes/cesta-header-hover.png') no-repeat top left;
+			background-color: none;
+		}
+	}
+
+	.boton-login {
+		.botones (@blanco, @blanco, @rosa, @rosa-hover);
+	}
+}
+
+/* menu navbar */
+nav.menu {
+	min-height: 35px;
+	margin: 0px;
+
+	background-color: @rosa;
+	border: 0px;
+	border-radius: 0px;
+
+	ul.navbar-nav {
+		& > li {
+			/* margin xs sm */
+			margin: 10px 10px 10px 20px;
+
+			& > a {
+				display: inline;
+
+				.enlaces (@blanco, @celeste);
+				font-size: 18px;
+				font-weight: 300;
+				padding: 0px;
+
+				&:hover {
+					background-color: transparent;
+					text-decoration: none;
+				}
+			}
+		}
+	}
+
+	/* boton desplegable xs */
+	.navbar-toggle {
+		float: left;
+		margin-left: 10px;
+
+		background-color: @rosa;
+	    border: 0px;
+
+		&:hover,
+		&:focus,
+		&:visited {
+			background-color: @rosa;
+	    	border: 0px;
+		}
+
+		.icon-bar {
+	    	background-color: @blanco;
+		}
+	}
+
+	.boton-mostar-categorias {
+		float: right;
+		padding: 9px 10px;
+		margin: 8px 0px 8px 0px;
+
+		.botones (@blanco, @blanco, @rosa, @rosa);
+	}
+
+	/* centrado md lg */
+	@media (min-width: 768px){
+		ul.navbar-nav{
+		    float: none;
+		    margin: 0 auto;
+		    display: table;
+		    /*table-layout: fixed;*/
+
+		    & > li {
+				margin: 7px 30px 5px 30px;
+			}
+		}
+	}
+}
+
+/* carousel */
+.carousel-inicio {
+
+	.carousel-control {
+		opacity: 0.8;
+
+		&.left {
+			background: url('/bundles/klikastatic/imagenes/carousel-control-left.png') no-repeat center center;
+
+			&:hover {
+				background: url('/bundles/klikastatic/imagenes/carousel-control-left-hover.png') no-repeat center center;
+			}
+		}
+
+		&.right {
+			background: url('/bundles/klikastatic/imagenes/carousel-control-right.png') no-repeat center center;
+
+			&:hover {
+				background: url('/bundles/klikastatic/imagenes/carousel-control-right-hover.png') no-repeat center center;
+			}
+		}
+	}
+
+	.carousel-indicators {
+		left: 95%;
+		bottom: 10px;
+		width: 30%;
+
+		li {
+			width: 18px;
+			height: 18px;
+			background-color: @celeste;
+
+			&.active {
+				width: 19px;
+				height: 19px;
+				background-color: @rosa;
+			}
+		}
+	}
+}
+
+.carousel-bottom {
+	height: 50px;
+	background-color: @negro;
+}
+
+/* footer */
+.footer {
+	* {
+		font-size: 12px;
+		color: @blanco;
+	}
+
+	& > div {
+		padding-top: @espacio;
+	}
+
+	a {
+		.enlaces (@blanco, @blanco);
+	}
+
+	.footer-avisos {
+		/*position: absolute;
+		bottom: 0px;*/
+	}
+
+	.footer-rosa {
+		background-color: @rosa;
+	}
+
+	.footer-negro {
+		background-color: @negro;	}
+}
+
+/* menu lateral catalogo */
+.menu-catalogo {
+	overflow: hidden;
+	margin-bottom: @espacio;
+	background-color: @rosa-claro;
+
+	h2 {
+		margin: 0px;
+		padding: 20px 20px 10px 45px;
+
+		font-family: @henny;
+		font-size: 24px;
+		font-weight: @font-weight-base;
+		color: @blanco;
+		text-transform: none;
+		line-height: 140%;
+		background: url('/bundles/klikastatic/imagenes/menu-catalogo.png') no-repeat 10px 10px;
+		background-color: @rosa;
+	}
+
+	a {
+		display: block;
+
+		.enlaces (@rosa, @rosa);
+		font-size: 16px;
+
+		.menu-span {
+			margin-left: 5px;
+			font-size: 14px;
+		}
+	}
+
+	ul {
+		margin: 0px;
+
+		li {
+			margin: 0px;
+
+			a:hover {
+				text-decoration: none;
+			}
+
+			&.categoria {
+				padding: 15px @menu-lateral-espacio 15px @menu-lateral-espacio;
+				border-bottom: 1px solid @rosa;
+
+				&:last-child {
+					border: 0px;
+				}
+
+				& > a {
+					font-size: 20px;
+				}
+
+				ul {
+					padding-left: @menu-lateral-espacio;
+
+					li {
+						margin-top: 10px;
+					}
+				}
+			}
+		}
+	}
+}
+
+/* menu lateral cesta */
+.menu-cesta {
+	overflow: hidden;
+	background-color: @morado-claro;
+
+	h2 {
+		margin: 0px;
+		padding: 20px 10px 10px 45px;
+
+		font-family: @henny;
+		font-size: 18px;
+		font-weight: @font-weight-base;
+		color: @blanco;
+		text-transform: none;
+		line-height: 130%;
+		background: url('/bundles/klikastatic/imagenes/menu-cesta.png') no-repeat 10px 10px;
+		background-color: @morado;
+	}
+
+	h3.total-articulos {
+		padding: 10px @menu-lateral-espacio 10px @menu-lateral-espacio;
+
+		.titulos (16px, 400, @morado, normal);
+		border-bottom: 1px solid @morado;
+	}
+
+	.media {
+		margin: 0px;
+		padding: 0px @menu-lateral-espacio @menu-lateral-espacio @menu-lateral-espacio;
+
+		h3 {
+			margin-bottom: 10px;
+			font-size: 14px;
+
+			a {
+				color: @morado !important;
+			}
+		}
+
+		.precio {
+			margin: 0px;
+
+			font-weight: 700;
+			color: @negro;
+		}
+	}
+
+	p.total {
+		padding: 5px @menu-lateral-espacio 5px @menu-lateral-espacio;
+
+		font-size: 14px;
+		font-weight: 700;
+		color: @morado;
+		text-align: right;
+		border-top: 1px solid @morado;
+		border-bottom: 1px solid @morado;
+	}
+
+	p.administrar-cesta {
+		margin-bottom: 10px;
+
+		a {
+			display: block;
+			margin-left: @menu-lateral-espacio;
+			padding: 15px 0px 10px 40px;
+
+			.enlaces (@gris, @morado);
+			background: url('/bundles/klikastatic/imagenes/administrar-cesta.png') no-repeat left top;
+
+			&:hover {
+				text-decoration: none;
+				background: url('/bundles/klikastatic/imagenes/administrar-cesta-hover.png') no-repeat left top;
+			}
+		}
+	}
+
+	p.procesar-pedido {
+		a {
+			display: block;
+			margin-left: @menu-lateral-espacio;
+			padding: 10px 0px 10px 40px;
+
+			.enlaces (@gris, @morado);
+			background: url('/bundles/klikastatic/imagenes/procesar-pedido.png') no-repeat left top;
+
+			&:hover {
+				text-decoration: none;
+				background: url('/bundles/klikastatic/imagenes/procesar-pedido-hover.png') no-repeat left top;
+			}
+		}
+	}
+}
+
+/* miga */
+.miga {
+	font-size: @font-size-base;
+}
+
+/* articulos */
+.articulos-row {
+
+	.detalle {
+		&:last-child {
+			.precio {
+				margin: 0px;
+			}
+		}
+	}
+}
+
+/* articulo detalle */
+.articulo {
+	font-size: 12px;
+
+	h1 {
+		/*.titulos (16px, 700, @rosa, none);*/
+	}
+
+	.miniaturas {
+		margin-bottom: @espacio;
+
+		.item img{
+  			display: block;
+  			width: 100%;
+  			height: auto;
+		}
+	}
+
+	p.precio {
+		font-size: 26px;
+		font-weight: 700;
+		color: @morado;
+	}
+
+	p.ahorro {
+		font-size: @font-size-base;
+		text-align: right;
+	}
+
+	p.descuento {
+		font-size: @font-size-base;
+		font-weight: 700;
+		font-style: italic;
+		color: @morado;
+	}
+
+	a.tabla {
+		.enlaces (@gris, @rosa);
+		text-decoration: underline;
+	}
+
+	a.anadir-articulo {
+		padding: 10px 10px 5px 40px;
+
+		.enlaces (@gris, @morado);
+		font-size: @font-size-base;
+		background: url('/bundles/klikastatic/imagenes/anadir-articulo.png') no-repeat left top;
+
+		&:hover {
+			text-decoration: none;
+			background: url('/bundles/klikastatic/imagenes/anadir-articulo-hover.png') no-repeat left top;
+		}
+	}
+
+	p.plazo {
+		padding: 5px 0px 5px 0px;
+
+		font-size: @font-size-base;
+		border-top: 1px solid @gris-claro;
+		border-bottom: 1px solid @gris-claro;
+	}
+
+	p.descripcion {
+		color: @rosa;
+	}
+
+	p.aviso {
+		/*margin: 0px;*/
+		padding: 10px;
+
+		.bordes-redondeados;
+		border: 1px solid @gris-claro;
+	}
+
+	.btn-colorselector {
+  		width: 30px;
+  		height: 30px;
+  		.bordes-redondeados;
+	}
+
+	.dropdown-colorselector {
+		& > .dropdown-menu {
+			top: 85%;
+  			left: -1px;
+  			padding: 4px;
+		}
+
+		& > .dropdown-menu>li {
+			width: 30px;
+			height: 30px;
+			margin: 5px;
+
+			& > .color-btn {
+				width: 30px;
+				height: 30px;
+			}
+
+			& > .color-btn.selected:after {
+				line-height: 30px;
+			}
+		}
+	}
+
+	.midete {
+		font-size: 14px;
+
+		h2 {
+			cursor: pointer;
+		}
+
+		.form-horizontal {
+			label {
+				text-align: left;
+			}
+
+			.form-group {
+
+				.medida-label {
+					padding: 2px 7px 2px 6px;
+
+					color: @blanco;
+					text-align: center;
+					background: url('/bundles/klikastatic/imagenes/medida-label.png') no-repeat top left;
+
+					&:hover {
+						background: url('/bundles/klikastatic/imagenes/medida-label-hover.png') no-repeat top left;
+					}
+				}
+
+				&:last-child {
+					margin-bottom: 0px;
+				}
+
+				.resultado {
+					font-size: 16px;
+					text-align: center;
+					background-color: @rosa-claro;
+				}
+			}
+
+			a.talla-anterior {
+				display: inline-block;
+				margin-left: 20px;
+				padding: 3px 18px 0px 0px;
+				background: url('/bundles/klikastatic/imagenes/talla-anterior.png') no-repeat top left;
+
+				&:hover {
+					text-decoration: none;
+					background: url('/bundles/klikastatic/imagenes/talla-anterior-hover.png') no-repeat top left;
+				}
+			}
+
+			a.talla-siguiente {
+				display: inline-block;
+				margin-left: 3px;
+				padding: 3px 18px 0px 0px;
+				background: url('/bundles/klikastatic/imagenes/talla-siguiente.png') no-repeat top left;
+
+				&:hover {
+					text-decoration: none;
+					background: url('/bundles/klikastatic/imagenes/talla-siguiente-hover.png') no-repeat top left;
+				}
+			}
+		}
+	}
+
+	.articulos-relacionados {
+		span.precio {
+			font-size: 14px;
+			font-weight: 700;
+		}
+
+		.relacionados {
+			margin-bottom: @espacio;
+
+			.item{
+  				margin: 0px 8px 0px 8px;
+			}
+
+			.item img{
+  				display: block;
+  				width: 100%;
+  				height: auto;
+			}
+		}
+	}
+}
+
+/* clientes (clase condicionada en index.php) */
+.clientes {
+	h1 {
+		.titulos (20px, 700, @morado, normal);
+	}
+
+	h2 {
+		.titulos (16px, 700, @morado, normal);
+	}
+
+	h3 {
+		.titulos (14px, 700, @morado, normal);
+	}
+
+	h4 {
+		.titulos (14px, 700, @rosa, normal);
+	}
+
+	a {
+		.enlaces (@morado, @morado);
+	}
+
+	/* navegador */
+	.navegador-cesta {
+		margin-bottom: @espacio;
+
+		.btn {
+			.botones (@blanco, @blanco, @morado, @morado-hover);
+			font-size: 12px;
+
+			&:disabled {
+				.botones (@blanco, @blanco, @gris, @gris);
+				font-size: 12px;
+			}
+		}
+	}
+
+	/* generales */
+	.boton-volver {
+		.botones (@blanco, @blanco, @rosa, @rosa-hover);
+	}
+
+	/* cesta */
+	.boton-confirmar {
+		.botones > .icono ('/bundles/klikastatic/imagenes/boton-finalizar-pedido.png', 86px, 3px);
+	}
+
+	/* login */
+	.boton-identificarse {
+		.botones > .icono ('/bundles/klikastatic/imagenes/boton-identificarse.png', 102px, 2px);
+	}
+
+	.boton-alta {
+		.botones > .icono ('/bundles/klikastatic/imagenes/boton-alta.png', right, -2px);
+	}
+
+	/* datos-de-envio */
+	.boton-modificar-datos {
+		.botones > .icono ('/bundles/klikastatic/imagenes/boton-modificar-datos.png', right, 3px);
+	}
+
+	.boton-seguir-comprando {
+		.botones > .icono ('/bundles/klikastatic/imagenes/boton-seguir-comprando.png', right, 3px, @rosa, @rosa-hover);
+	}
+
+	.boton-continuar {
+		.botones > .icono ('/bundles/klikastatic/imagenes/boton-continuar.png', right, 3px);
+	}
+
+	/* formas-de-pago */
+	.resumen-formas-de-pago {
+		* {
+			color: @blanco !important;
+		}
+
+		table {
+			background-color: @morado-hover;
+
+			.total {
+				font-weight: 700;
+				background-color: @morado;
+			}
+		}
+	}
+
+	.boton-datos-de-envio {
+		.botones > .icono ('/bundles/klikastatic/imagenes/boton-datos-de-envio.png', right, 4px);
+	}
+
+	.boton-finalizar-pedido {
+		.botones > .icono ('/bundles/klikastatic/imagenes/boton-finalizar-pedido.png', 125px, 3px);
+	}
+
+	/* fin-de-pedido */
+	.boton-imprimir-pedido {
+		.botones > .icono ('/bundles/klikastatic/imagenes/boton-imprimir-pedido.png', 128px, 3px);
+	}
+}

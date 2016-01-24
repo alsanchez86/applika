@@ -1,0 +1,15 @@
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+klika_applika:
+    resource: "@KlikaApplikaBundle/Resources/config/routing.yml"
+    prefix:   /
+
+klika_catalogo:
+    resource: "@KlikaCatalogoBundle/Resources/config/routing.yml"
+    prefix:   /
+
+klika_static:
+    resource: "@KlikaStaticBundle/Resources/config/routing.yml"
+    prefix:   /
+

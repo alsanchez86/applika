@@ -1,0 +1,29 @@
+{% if relacionados|length %}
+  <aside class="articulos-relacionados hidden-xs">
+    <hr style="margin-top: 0px">
+
+    <header>
+      <h2>Art&iacute;culos relacionados</h2>
+    </header>
+
+    <section id="relacionados" class="relacionados owl-carousel">
+      {% for relacionado in relacionados %}
+
+        <article class="item">
+          <p><a href="{{ path ('articulo', {'categoria_id': relacionado.categoria.id, 'categoria': relacionado.categoria.slug, 'articulo_id': relacionado.id, 'articulo': relacionado.slug}) }}"><img src="" onerror="sinImagen (event, '{{ asset ('/bundles/klikastatic/imagenes/sin-imagen.png') }}')"></a></p>
+
+          <header>
+            <h3><a href="{{ path ('articulo', {'categoria_id': relacionado.categoria.id, 'categoria': relacionado.categoria.slug, 'articulo_id': relacionado.id, 'articulo': relacionado.slug}) }}">{{relacionado.nombre}}</a></h3>
+          </header>
+
+          {% if relacionado.entradilla %}
+            <p>{{relacionado.entradilla}}</p>
+          {% endif %}
+
+          <p class="sin-margin">Precio:&nbsp;<span class="precio">625&nbsp;&euro;</span></p>
+        </article>
+
+      {% endfor %}
+    </section>
+  </aside>
+{% endif %}

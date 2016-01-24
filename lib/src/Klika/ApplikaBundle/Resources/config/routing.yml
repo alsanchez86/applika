@@ -1,0 +1,63 @@
+#_controler: paquete:controlador:accion
+
+#login
+applika_login:
+    path:     /applika/login/
+    defaults: { _controller: KlikaApplikaBundle:Applika:login}
+    requirements: {url: .*/$}
+
+applika_login_check:
+    path:     /applika/login/check/
+
+applika_logout:
+    path:     /applika/login/logout/
+
+#Para acceder a las siguientes rutas es necesario estar autentificado
+applika:
+    path:     /applika/
+    defaults: { _controller: KlikaApplikaBundle:Applika:primero}
+    requirements: {url: .*/$}
+
+applika_modulo:
+    path:     /applika/{modulo_id}/{modulo}/{pagina}/
+    defaults: { _controller: KlikaApplikaBundle:Applika:modulo, limit: 6, pagina: 1 }
+    requirements: {url: .*/$, modulo_id: \d+, pagina: \d+}
+    options:
+        expose: true
+
+applika_ficha_anadir:
+    path:     /applika/{modulo_id}/{modulo}/anadir/
+    defaults: { _controller: KlikaApplikaBundle:Applika:ficha, ficha_id: false, padre_id: false }
+    requirements: {url: .*/$, modulo_id: \d+}
+    options:
+        expose: true
+
+applika_ficha_anadir_hijo:
+    path:     /applika/{modulo_id}/{modulo}/{padre_id}/anadir/
+    defaults: { _controller: KlikaApplikaBundle:Applika:ficha, ficha_id: false }
+    requirements: {url: .*/$, modulo_id: \d+, padre_id: \d+}
+    options:
+        expose: true
+
+applika_ficha_editar:
+    path:     /applika/{modulo_id}/{modulo}/{ficha_id}/{ficha}/
+    defaults: { _controller: KlikaApplikaBundle:Applika:ficha, padre_id: false }
+    requirements: {url: .*/$, modulo_id: \d+, ficha_id: \d+}
+    options:
+        expose: true
+
+applika_ficha_eliminar:
+    path:     /applika/eliminar/
+    defaults: { _controller: KlikaApplikaBundle:Applika:eliminar }
+    requirements: {url: .*/$}
+    methods:  [POST]
+    options:
+        expose: true
+
+applika_ficha_activar_desactivar:
+    path:     /applika/activar-desactivar/
+    defaults: { _controller: KlikaApplikaBundle:Applika:activarDesactivar }
+    requirements: {url: .*/$}
+    methods:  [POST]
+    options:
+        expose: true

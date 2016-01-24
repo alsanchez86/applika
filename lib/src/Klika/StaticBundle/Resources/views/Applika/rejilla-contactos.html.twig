@@ -1,0 +1,31 @@
+{% extends 'KlikaApplikaBundle:Applika:rejilla.html.twig' %}
+
+{% block rejilla %}
+<!-- cabecera hidden-xs -->
+<div class="cabecera hidden-xs">
+    <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            nombre
+        </div>
+
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            apellidos
+        </div>
+    </div>
+</div>
+
+<!-- fila -->
+{% for fila in filas %}
+    <article id="{{fila.slug}}-{{fila.id}}" class="fila {% if fila.desactivado %} desactivado {% endif %}">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                {{fila.nombre}}
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                {{fila.apellidos}}
+            </div>
+        </div>
+    </article>
+{% endfor %}
+{% endblock %}

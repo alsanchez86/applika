@@ -1,0 +1,7 @@
+parameters:
+#    klika_catalogo.example.class: Klika\CatalogoBundle\Example
+
+services:
+#    klika_catalogo.example:
+#        class: %klika_catalogo.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

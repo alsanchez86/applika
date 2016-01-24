@@ -1,0 +1,7 @@
+parameters:
+#    klika_applika.example.class: Klika\ApplikaBundle\Example
+
+services:
+#    klika_applika.example:
+#        class: %klika_applika.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

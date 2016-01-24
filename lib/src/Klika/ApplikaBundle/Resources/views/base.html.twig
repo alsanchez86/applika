@@ -1,0 +1,133 @@
+{% extends '::applika.html.twig' %}
+
+{% block main %}
+<!-- <div class="row"> -->
+<div id="row-offcanvas" class="row row-offcanvas row-offcanvas-left">
+    <div id="sidebar-offcanvas" class="col-xs-12 col-sm-12 col-md-3 col-lg-3 sidebar-offcanvas">
+        <div id="fondo-menu" class="fondo-menu"></div>
+
+        <!-- web -->
+        <header>
+            <h2 class="titulo"><a href="{{ path ('inicio') }}">xxx</a></h2>
+        </header>
+
+        <nav id="menu" class="menu">
+            {{ render (controller ('KlikaApplikaBundle:Applika:menu')) }}
+        </nav>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+        <!-- top -->
+        <div class="top">
+            <div class="row">
+                <div class="visible-xs col-xs-3 visible-sm col-sm-4">
+                    <!-- boton-menu-xs -->
+                    <button class="boton-menu-xs btn btn-sm" type="button" data-toggle="offcanvas"></button>
+                </div>
+
+                <div class="logo col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                    <a href="{{ path ('applika') }}"><img src="{{ asset ('/bundles/klikaapplika/imagenes/logo.png') }}" alt="applika" style="height: 30px;"></a>
+                </div>
+
+                <div class="col-xs-3 col-sm-4 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
+                    <!-- opciones -->
+                    <div class="opciones-botones visible-md visible-lg">
+                        <!-- <a href="#"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;Ajustes</a> -->
+                        <a href="{{ path ('applika_logout') }}" class=""><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Desconectar</a>
+                    </div>
+
+                    <!-- boton configuracion -->
+                    <div class="btn-group pull-right visible-xs visible-sm">
+                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i></button>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <!-- <li><a href="#">Ajustes</a></li> -->
+                            <li><a href="{{ path ('applika_logout') }}">Desconectar</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% block contenido %}{% endblock %}
+
+        <footer>
+            <p class="derechos">Applika CMS 1.0. &copy; Todos los derechos reservados Klika S.L.</p>
+        </footer>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block css %}
+{{ parent () }}
+
+<link href="{{ asset ('/bundles/klikastatic/lib/bootstrap/extra/offcanvas/css/offcanvas.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block js %}
+{{ parent () }}
+
+<script type="text/javascript" src="{{ asset ('/bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path ('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+<script src="{{ asset ('/bundles/klikastatic/lib/bootstrap/extra/offcanvas/js/ie10-viewport-bug-workaround.js') }}"></script>
+{% endblock %}
+
+{% block javascript %}
+{{ parent () }}
+
+<script>
+$(document).ready (function () {
+
+    menuActivo ();
+    offCanvas ();
+    /*fondoMenu ();*/
+});
+
+$(window).load (function () {
+
+    /*mostrarMenu ();*/
+});
+
+$(window).resize (function () {
+
+    /*fondoMenu ();*/
+});
+
+
+function offCanvas () {
+
+    $('[data-toggle="offcanvas"]').click (function () {
+
+        $('#row-offcanvas').toggleClass ('active');
+    });
+}
+
+function menuActivo () {
+
+    var menu   = $('#menu > ul');
+    var activo = $("#modulo-{{ app.request.get ('modulo_id') }}", menu);
+
+    //activar activos
+    activo.css ({textDecoration: 'underline'});
+}
+
+/*function fondoMenu () {
+
+    var fondoMenu   = $('#fondo-menu');
+    var menu        = $('#menu');
+
+    fondoMenu.css ({width: menu.width ()});
+}*/
+
+/*function mostrarMenu () {
+
+    $('#sidebar-offcanvas').css ({opacity: 1});
+}
+*/
+function buscar () {
+
+    alert(1);
+}
+</script>
+{% endblock %}

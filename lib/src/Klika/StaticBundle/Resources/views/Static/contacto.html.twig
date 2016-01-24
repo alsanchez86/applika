@@ -1,0 +1,136 @@
+{% extends '::base.html.twig' %}
+
+{% block contenido %}
+<section>
+	<header>
+		<h1>Contacto</h1>
+	</header>
+
+	<p>Puede realizar cualquier consulta o hacernos llegar sus sugerencias. Solo tiene que rellenar el siguiente formulario y automáticamente recibiremos sus peticiones:</p>
+
+	<div id="contacto">
+		<form role="form" action="{{ path ('contacto') }}" method="POST" novalidate {{ form_enctype (form) }}>
+			{{ form_errors (form) }}
+
+			<div class="row">
+				<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					{{ form_label 	(form.nombre) }}
+    				{{ form_widget	(form.nombre) }}
+				</div>
+
+				<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					{{ form_label 	(form.apellidos) }}
+    				{{ form_widget	(form.apellidos) }}
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					{{ form_label 	(form.cifdni, 'CIF / DNI') }}
+    				{{ form_widget	(form.cifdni) }}
+				</div>
+
+				<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					{{ form_label 	(form.direccion, 'Dirección') }}
+    				{{ form_widget	(form.direccion) }}
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					{{ form_label 	(form.cp, 'Código postal') }}
+    				{{ form_widget	(form.cp) }}
+				</div>
+
+				<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					{{ form_label 	(form.poblacion, 'Población') }}
+    				{{ form_widget	(form.poblacion) }}
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					{{ form_label 	(form.provincia) }}
+    				{{ form_widget	(form.provincia) }}
+				</div>
+
+				<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					{{ form_label 	(form.pais, 'País') }}
+    				{{ form_widget	(form.pais) }}
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					{{ form_label 	(form.telefono, 'Teléfono') }}
+    				{{ form_widget	(form.telefono) }}
+				</div>
+
+				<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					{{ form_label 	(form.email) }}
+    				{{ form_widget	(form.email) }}
+				</div>
+			</div>
+
+			<div class="form-group">
+				{{ form_label 	(form.consulta) }}
+    			{{ form_widget	(form.consulta, {'attr': {'rows': '5'}}) }}
+			</div>
+
+			<div class="hide">
+				{{ form_rest(form) }}
+			</div>
+
+			<div class="row">
+				<div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+					<p style="font-size: 12px">Los campos marcados con <span class="rosa">*</span> son obligatorios.</p>
+				</div>
+
+				<div class="col-lg-4 col-md-5 col-sm-5 col-xs-12">
+					<p class="text-right">
+						<button id="contacto-submit" class="btn btn-sm" type="submit">Enviar&nbsp;&nbsp;<span class="glyphicon glyphicon-envelope"></span></button>
+
+						<img id="cargando-submit" src="{{ asset ('/bundles/klikastatic/imagenes/cargando.gif') }}" style="display: none; margin-right: 30px;">
+					</p>
+				</div>
+			</div>
+		</form>
+	</div> <!-- formulario -->
+</section>
+
+{% if contactoOk %}
+	{{ include ('KlikaStaticBundle:Static:modal-contacto-ok.html.twig') }}
+{% endif %}
+{% endblock %}
+
+
+{% block javascript %}
+{{ parent() }}
+<script>
+
+$(document).ready (function () {
+
+	contactoSubmit ();
+
+	{% if contactoOk %}
+		$('#modal-contacto-ok').modal ('show');
+	{% endif %}
+});
+
+$(document).keypress(function(event) {
+
+    if (event.which == 13) $('#contacto form').submit ();
+});
+
+
+function contactoSubmit () {
+
+	$('#contacto form').submit (function (event) {
+
+		$('#contacto-submit').css ({display: 'none'});
+		$('#cargando-submit').show ();
+	});
+}
+
+</script>
+{% endblock %}

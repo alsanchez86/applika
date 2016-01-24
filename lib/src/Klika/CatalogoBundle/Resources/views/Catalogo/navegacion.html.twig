@@ -1,0 +1,11 @@
+{% if siguiente or anterior %}
+	<div class="clearfix hidden-xs">
+		{% if siguiente %}
+			<p class="sin-margin pull-right"><a href="{{ path ('articulo', {'categoria_id': categoria.id, 'categoria': categoria.slug, 'articulo_id': siguiente.id, 'articulo': siguiente.slug}) }}">siguiente ></a></p>
+		{% endif %}
+
+		{% if anterior %}
+			<p class="sin-margin pull-right" {% if siguiente %} style="margin-right: 20px;" {% endif %}><a href="{{ path ('articulo', {'categoria_id': categoria.id, 'categoria': categoria.slug, 'articulo_id': anterior.id, 'articulo': anterior.slug}) }}">< anterior</a></p>
+		{% endif %}
+	</div>
+{% endif %}

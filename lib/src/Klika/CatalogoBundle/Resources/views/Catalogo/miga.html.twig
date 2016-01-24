@@ -1,0 +1,36 @@
+{% if miga|length > 1 %}
+
+	<p class="miga hidden-xs">
+	  {% for categoria in miga %}
+	  	{% if not loop.last %}
+
+	  		<a href="{{ path ('categoria', {'categoria_id': categoria.id, 'categoria': categoria.slug}) }}">{{categoria.nombre}}</a>
+	    	&nbsp;>&nbsp;
+
+	  	{% else %}
+
+	  		{% if articulo %}
+	  			<a href="{{ path ('categoria', {'categoria_id': categoria.id, 'categoria': categoria.slug}) }}">{{categoria.nombre}}</a>
+	    		&nbsp;>&nbsp;
+
+	  			{{articulo.nombre}}
+	  		{% else %}
+	  			{{categoria.nombre}}
+	  		{% endif %}
+
+	  	{% endif %}
+	  {% endfor %}
+	</p>
+
+{% elseif articulo %}
+
+	<p class="miga hidden-xs">
+		{% for categoria in miga %}
+	  		<a href="{{ path ('categoria', {'categoria_id': categoria.id, 'categoria': categoria.slug}) }}">{{categoria.nombre}}</a>
+	    	&nbsp;>&nbsp;
+
+	  		{{articulo.nombre}}
+	  	{% endfor %}
+	</p>
+
+{% endif %}

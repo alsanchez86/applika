@@ -1,0 +1,77 @@
+Klika\CatalogoBundle\Entity\Articulo:
+    type: entity
+    table: articulos
+    repositoryClass: Klika\CatalogoBundle\Entity\ArticuloRepository
+    id:
+      id:
+        type: integer
+        id: true
+        generator:
+          strategy: AUTO
+    fields:
+      flag:
+        type: smallint
+        length: 6
+      codigo:
+        type: string
+        length: 10
+      nombre:
+        type: string
+        length: 100
+      entradilla:
+        type: text
+        nullable: TRUE
+      texto:
+        type: text
+        nullable: TRUE
+      textoText:
+        type: text
+        nullable: TRUE
+      aviso:
+        type: text
+        nullable: TRUE
+      buscar:
+        type: text
+      slug:
+        type: string
+        length: 128
+        gedmo:
+          slug:
+            separator: -
+            style: default
+            fields:
+              - nombre
+      path:
+        type: text
+        nullable: true
+    indexes:
+      search_idx:
+        columns: slug
+    manyToMany:
+      #articulos_categorias
+      categorias:
+        targetEntity: Klika\CatalogoBundle\Entity\Categoria
+        inversedBy: articulos
+        joinTable:
+          name: articulos_categorias
+          joinColumns:
+            articulo_id:
+              referencedColumnName: id
+          inverseJoinColumns:
+            categoria_id:
+              referencedColumnName: id
+      #articulos_relacionados
+      relacionados:
+        targetEntity: Klika\CatalogoBundle\Entity\Articulo
+        inversedBy: articulos
+        joinTable:
+          name: articulos_relacionados
+          joinColumns:
+            articulo_id:
+              referencedColumnName: id
+          inverseJoinColumns:
+            relacionado_id:
+              referencedColumnName: id
+      articulos:
+        targetEntity: Klika\CatalogoBundle\Entity\Articulo
+        mappedBy: relacionados

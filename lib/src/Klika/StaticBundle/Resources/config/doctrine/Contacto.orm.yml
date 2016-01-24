@@ -1,0 +1,63 @@
+Klika\StaticBundle\Entity\Contacto:
+    type: entity
+    table: contactos
+    repositoryClass: Klika\StaticBundle\Entity\ContactoRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        flag:
+            type: smallint
+            length: 6
+        fecha:
+            type: date
+        nombre:
+            type: string
+            length: 100
+        apellidos:
+            type: string
+            length: 100
+        cifdni:
+            type: string
+            length: 9
+        direccion:
+            type: string
+            length: 100
+        cp:
+            type: string
+            length: 5
+        poblacion:
+            type: string
+            length: 100
+        provincia:
+            type: string
+            length: 100
+        pais:
+            type: string
+            length: 50
+        # pais:
+        #     type: integer
+        # faltaria la relacion con la entidad pais
+        telefono:
+            type: string
+            length: 9
+        email:
+            type: string
+            length: 100
+        consulta:
+            type: text
+        slug:
+            type: string
+            length: 128
+            gedmo:
+                slug:
+                    separator: -
+                    style: default
+                    fields:
+                        - nombre
+    indexes:
+        search_idx:
+            columns: slug

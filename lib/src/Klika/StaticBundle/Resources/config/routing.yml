@@ -1,0 +1,36 @@
+# _controler: paquete:controlador:accion
+quienes_somos:
+    pattern:  /quienes-somos/
+    defaults: { _controller: KlikaStaticBundle:Static:show, plantilla: 'quienes-somos' }
+    requirements:
+        url: .*/$
+
+politica_de_cookies:
+    pattern:  /politica-de-cookies/
+    defaults: { _controller: KlikaStaticBundle:Static:show, plantilla: 'politica-de-cookies' }
+    requirements:
+        url: .*/$
+
+ayuda:
+    pattern:  /ayuda/
+    defaults: { _controller: KlikaStaticBundle:Static:show, plantilla: 'ayuda' }
+    requirements:
+        url: .*/$
+
+politica_de_devolucion:
+    pattern:  /politica-de-devolucion/
+    defaults: { _controller: KlikaStaticBundle:Static:show, plantilla: 'politica-de-devolucion' }
+    requirements:
+        url: .*/$
+
+terminos_y_condiciones_de_uso:
+    pattern:  /terminos-y-condiciones-de-uso/
+    defaults: { _controller: KlikaStaticBundle:Static:show, plantilla: 'terminos-y-condiciones-de-uso' }
+    requirements:
+        url: .*/$
+
+contacto:
+    pattern:  /contacto/
+    defaults: { _controller: KlikaStaticBundle:Static:contacto }
+    requirements:
+        url: .*/$

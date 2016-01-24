@@ -1,0 +1,72 @@
+.texto-base {
+	font-family: @font-family-base;
+	font-size: @font-size-base;
+	font-weight: @font-weight-base;
+	color: @gris;
+	line-height: @line-height-base;
+}
+
+.bordes-redondeados {
+	border-radius: @border-radius;
+    -moz-border-radius: @border-radius;
+    -webkit-border-radius: @border-radius;
+}
+
+.enlaces (@color: @rosa, @hover: @rosa) {
+	/* .texto-base; los enlaces dentro de los titulos se verian afectados */
+	color: @color !important;
+
+	&:hover {
+		color: @hover !important;
+		text-decoration: underline;
+		outline: thin none;
+	}
+}
+
+.titulos (@font-size: @font-size-base, @font-weight: @font-weight-base, @color: @gris, @text-transform: normal) {
+	overflow: hidden;
+	margin: 0px 0px @espacio 0px;
+
+	font-family: @font-family-base;
+	font-size: @font-size;
+	font-weight: @font-weight;
+	color: @color;
+	line-height: @line-height-base;
+	text-transform: @text-transform;
+
+	a {.enlaces (@color, @color);}
+}
+
+.botones (@color: @blanco, @hover: @blanco, @background-color: @morado, @background-color-hover: @morado-hover) {
+	overflow: hidden;
+
+	.texto-base;
+	.bordes-redondeados;
+	color: @color;
+	background-color: @background-color;
+	cursor: pointer;
+
+	&:hover,
+	&:focus,
+	&:visited {
+		color: @hover !important;
+		background-color: @background-color-hover;
+		text-decoration: none;
+		border-color: none;
+		box-shadow: none;
+	}
+
+	.icono (@url: none, @right: right, @top: top, @bgcolor: @morado, @bgcolor-hover: @morado-hover) {
+		padding-right: 35px;
+
+		background: url(@url) no-repeat @right @top;
+		background-color: @bgcolor;
+
+		&:hover,
+		&:focus,
+		&:visited {
+			background: url(@url) no-repeat @right @top;
+			background-color: @bgcolor-hover;
+		}
+	}
+}

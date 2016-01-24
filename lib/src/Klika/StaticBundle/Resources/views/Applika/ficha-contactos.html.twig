@@ -1,0 +1,115 @@
+{% extends 'KlikaApplikaBundle:Applika:ficha.html.twig' %}
+
+{% block form %}
+<!-- flag -->
+{{ form_widget (form.flag) }}
+<div class="checkbox">
+    <label>
+        <input type="checkbox" value="{{ constant ('DESACTIVAR', ficha) }}" {% if ficha.desactivado %} checked {% endif %}>Desactivar <span class="text-lowercase">{{modulo.entidad}}</span>
+    </label>
+</div>
+
+<div class="row">
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        {{ form_label   (form.fecha) }}
+        {{ form_widget  (form.fecha) }}
+    </div>
+
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12"></div>
+</div>
+
+<div class="row">
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        {{ form_label   (form.nombre) }}
+        {{ form_widget  (form.nombre) }}
+    </div>
+
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        {{ form_label   (form.apellidos) }}
+        {{ form_widget  (form.apellidos) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        {{ form_label   (form.cifdni, 'CIF / DNI') }}
+        {{ form_widget  (form.cifdni) }}
+    </div>
+
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        {{ form_label   (form.direccion, 'Dirección') }}
+        {{ form_widget  (form.direccion) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        {{ form_label   (form.cp, 'Código postal') }}
+        {{ form_widget  (form.cp) }}
+    </div>
+
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        {{ form_label   (form.poblacion, 'Población') }}
+        {{ form_widget  (form.poblacion) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        {{ form_label   (form.provincia) }}
+        {{ form_widget  (form.provincia) }}
+    </div>
+
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        {{ form_label   (form.pais, 'País') }}
+        {{ form_widget  (form.pais) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        {{ form_label   (form.telefono, 'Teléfono') }}
+        {{ form_widget  (form.telefono) }}
+    </div>
+
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        {{ form_label   (form.email) }}
+        {{ form_widget  (form.email) }}
+    </div>
+</div>
+
+<div class="form-group">
+    {{ form_label   (form.consulta) }}
+    {{ form_widget  (form.consulta, {'attr': {'rows': '5'}}) }}
+</div>
+{% endblock %}
+
+
+{% block css %}
+{{ parent () }}
+
+<link href="{{ asset ('/bundles/klikaapplika/lib/datepicker/css/datepicker.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block js %}
+{{ parent () }}
+
+<script src="{{ asset ('/bundles/klikaapplika/lib/datepicker/js/bootstrap-datepicker.js') }}"></script>
+{% endblock %}
+
+{% block javascript %}
+{{ parent () }}
+
+<script>
+$(document).ready (function () {
+
+    $('#form_fecha').datepicker ({
+
+        'format': 'yyyy-mm-dd'
+    }).on ('changeDate', function () {
+
+        $('.datepicker').hide ();
+    });
+});
+</script>
+{% endblock %}

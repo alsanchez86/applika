@@ -1,0 +1,45 @@
+{% extends '::applika.html.twig' %}
+
+{% block main %}
+<section class="login">
+	<header>
+		<p><img class="img-responsive img-responsive-center" src="{{ asset ('/bundles/klikaapplika/imagenes/logo.png') }}" alt="Applika"></p>
+	</header>
+
+	<p>
+		<span class="bold">Bienvenid@ a applika</span>
+		<br>
+		<span class="gris">"Hacemos f&aacute;cil lo dificil"</span>
+	</p>
+	<br>
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
+			<form role="form" action="{{ path('applika_login_check') }}" method="POST">
+  				<div class="form-group">
+    				<input type="text" class="form-control input-sm" id="username" name="_username" value="{{last_username}}" placeholder="Introduzca su nombre de usuario...">
+  				</div>
+
+  				<div class="form-group">
+    				<input type="password" class="form-control input-sm" id="password" name="_password" placeholder="Introduzca su contrase&ntilde;a">
+  				</div>
+  				<br>
+
+  				{% if error %}
+    				<p>{{error.message}}</p>
+				{% endif %}
+
+  				<p><button type="submit" class="btn btn-login-applika"></button></p>
+			</form>
+		</div>
+	</div>
+
+	<!-- <p><a class="dorado" href="javascript:void (0)" data-toggle="modal" data-target="#modal-recordar-clave">¿Olvidaste tu clave de acceso?</a></p> -->
+
+	<footer>
+        <p class="derechos">Applika CMS 1.0. &copy; Todos los derechos reservados Klika S.L.</p>
+    </footer>
+
+    {{ include ('KlikaApplikaBundle:Applika:modal-recordar-clave.html.twig') }}
+</section>
+{% endblock %}

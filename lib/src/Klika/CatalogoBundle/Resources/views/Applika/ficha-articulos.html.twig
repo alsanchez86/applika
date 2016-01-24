@@ -1,0 +1,82 @@
+{% extends 'KlikaApplikaBundle:Applika:ficha.html.twig' %}
+
+{% block form %}
+<!-- flags -->
+<div class="row">
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="{{ constant ('DESACTIVAR', ficha) }}" {% if ficha.desactivado %} checked {% endif %}>Desactivar <span class="text-lowercase">{{modulo.entidad}}</span>
+            </label>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="{{ constant ('INICIO', ficha) }}" {% if ficha.inicio %} checked {% endif %}>Inicio
+            </label>
+        </div>
+    </div>
+</div>
+
+<!-- codigo -->
+<div class="row">
+    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        {{ form_label   (form.codigo) }}
+        {{ form_widget  (form.codigo) }}
+    </div>
+</div>
+
+<!-- nombre -->
+<div class="form-group">
+    {{ form_label   (form.nombre) }}
+    {{ form_widget  (form.nombre) }}
+</div>
+
+<!-- categoria -->
+<div class="categorias form-group">
+    {{ form_label   (form.categorias) }}
+    {{ form_widget  (form.categorias) }}
+</div>
+
+<!-- files -->
+<div id="files" class="form-group files">
+    {% if ficha.path|length %}
+        <div id="files-carousel" class="owl-carousel">
+            {% for file in ficha.path %}
+
+                {% set ruta = constant ('DIR', ficha) ~ file.name ~ '.' ~ file.ext %}
+
+                <div class="item">
+                    <a class="remove-file" href="javascript:void(0)"><span class="glyphicon glyphicon-remove-circle"></span></a>
+                    <a href="{{ asset (ruta) }}" title="{{file.ext}}" data-gallery><img id="{{file.name}}" class="img-thumbnail" src="{{ asset (ruta) }}" alt="{{file.name}}" onerror="sinImagen (event, '{{ asset ('/bundles/klikastatic/imagenes/sin-imagen.png') }}')"></a>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {{ form_widget (form.files) }}
+    {{ form_widget (form.removeFiles) }}
+
+    <button class="btn btn-sm" type="button" onclick="upload ()"><span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;A&ntilde;adir fotos</button>
+</div>
+
+<!-- entradilla -->
+<div class="form-group">
+    {{ form_label   (form.entradilla) }}
+    {{ form_widget  (form.entradilla, {'attr': {'rows': '5'}}) }}
+</div>
+
+<!-- texto -->
+<div class="form-group">
+    {{ form_label   (form.texto) }}
+    {{ form_widget  (form.texto, {'attr': {'rows': '5'}}) }}
+</div>
+
+<!-- files -->
+<div class="form-group">
+    {{ form_label   (form.aviso) }}
+    {{ form_widget  (form.aviso, {'attr': {'rows': '5'}}) }}
+</div>
+{% endblock %}

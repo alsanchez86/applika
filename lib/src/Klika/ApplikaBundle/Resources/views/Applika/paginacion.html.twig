@@ -1,0 +1,19 @@
+{% if npaginas > 1 %}
+  <div class="clearfix">
+    <ul class="pagination pull-right">
+      {% if pagina > 1 %}
+        <li><a href="{{ path ('applika_modulo', {'modulo_id': modulo.id, 'modulo': modulo.slug, 'pagina': pagina - 1}) }}">&laquo;</a></li>
+      {% endif %}
+
+      {% for i in range (1, npaginas) %}
+          <li id="pagina-{{i}}">
+            <a href="{{ path ('applika_modulo', {'modulo_id': modulo.id, 'modulo': modulo.slug, 'pagina': i}) }}">{{i}}</a>
+          </li>
+      {% endfor %}
+
+      {% if pagina < npaginas %}
+        <li><a href="{{ path ('applika_modulo', {'modulo_id': modulo.id, 'modulo': modulo.slug, 'pagina': pagina + 1}) }}">&raquo;</a></li>
+      {% endif %}
+    </ul>
+  </div>
+{% endif %}

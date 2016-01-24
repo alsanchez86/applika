@@ -1,0 +1,27 @@
+{% extends 'KlikaApplikaBundle:Applika:ficha.html.twig' %}
+
+{% block form %}
+<!-- flags -->
+<div class="checkbox">
+    <label>
+        <input type="checkbox" value="{{ constant ('DESACTIVAR', ficha) }}" {% if ficha.desactivado %} checked {% endif %}>Desactivar <span class="text-lowercase">{{modulo.entidad}}</span>
+    </label>
+</div>
+
+<div class="form-group">
+    {{ form_label   (form.nombre) }}
+    {{ form_widget  (form.nombre) }}
+</div>
+
+<div class="form-group">
+    {{ form_label   (form.texto) }}
+    {{ form_widget  (form.texto, {'attr': {'rows': '5'}}) }}
+</div>
+{% endblock %}
+
+
+{% block js %}
+{{ parent () }}
+
+<script src="{{ asset ('/bundles/klikaapplika/lib/ckeditor/ckeditor.js') }}"></script>
+{% endblock %}

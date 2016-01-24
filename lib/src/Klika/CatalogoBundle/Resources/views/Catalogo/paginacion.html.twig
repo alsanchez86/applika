@@ -1,0 +1,32 @@
+{% if npaginas > 1 %}
+  <div class="clearfix">
+    <ul class="pagination pull-right">
+      {% if pagina > 1 %}
+        <li><a href="{{ path ('categoria', {'categoria_id': categoria.id, 'categoria': categoria.slug, 'pagina': pagina - 1}) }}">&laquo;</a></li>
+      {% endif %}
+
+      {% for i in range (1, npaginas) %}
+          <li id="pagina-{{i}}">
+            <a href="{{ path ('categoria', {'categoria_id': categoria.id, 'categoria': categoria.slug, 'pagina': i}) }}">{{i}}</a>
+          </li>
+      {% endfor %}
+
+      {% if pagina < npaginas %}
+        <li><a href="{{ path ('categoria', {'categoria_id': categoria.id, 'categoria': categoria.slug, 'pagina': pagina + 1}) }}">&raquo;</a></li>
+      {% endif %}
+    </ul>
+  </div>
+
+  <script>
+    $(document).ready (function () {
+
+      paginacion ();
+    });
+
+
+    function paginacion () {
+
+      $('#pagina-{{pagina}}', $('ul.pagination')).addClass ('active');
+    }
+  </script>
+{% endif %}

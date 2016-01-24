@@ -1,0 +1,53 @@
+{% extends 'KlikaApplikaBundle:Applika:rejilla.html.twig' %}
+
+{% block rejilla %}
+<!-- cabecera hidden-xs -->
+<div class="cabecera hidden-xs">
+    <div class="row">
+        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+            foto
+        </div>
+
+        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+            codigo
+        </div>
+
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            nombre
+        </div>
+
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            categoria
+        </div>
+    </div>
+</div>
+
+<!-- fila -->
+{% for fila in filas %}
+    {% if fila.path|length > 0 %}
+        {% set foto = '/contenidos/articulos/thumbnail/' ~ fila.path [0]['name'] ~ '.' ~ fila.path [0]['ext'] %}
+    {% else %}
+        {% set foto = asset ('/bundles/klikaapplika/imagenes/sin-imagen.png') %}
+    {% endif %}
+
+    <article id="{{fila.slug}}-{{fila.id}}" class="fila {% if fila.desactivado %} desactivado {% endif %}">
+        <div class="row">
+            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                <img src="{{foto}}" class="img-responsive" onerror="sinImagen (event, '{{ asset ('/bundles/klikaapplika/imagenes/sin-imagen.png') }}')">
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                {{fila.codigo}}
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                {{fila.nombre}}
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                categoria
+            </div>
+        </div>
+    </article>
+{% endfor %}
+{% endblock %}

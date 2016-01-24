@@ -1,0 +1,9 @@
+#Articulo
+Klika\CatalogoBundle\Entity\Articulo:
+    properties:
+        codigo:
+            - NotBlank:
+                message: "Debe introducir un código."
+        nombre:
+            - NotBlank:
+                message: "Debe introducir un nombre."

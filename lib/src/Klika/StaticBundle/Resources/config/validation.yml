@@ -1,0 +1,47 @@
+#Contacto
+Klika\StaticBundle\Entity\Contacto:
+    properties:
+        nombre:
+            - NotBlank:
+                message: "Debe introducir su nombre."
+            - Length:
+                min: 2
+                minMessage: "El nombre introducido no es válido."
+        apellidos:
+            - NotBlank:
+                message: "Debe introducir sus apellidos."
+            - Length:
+                min: 2
+                minMessage: "Los apellidos introducido no son válido."
+        cifdni:
+            - Length:
+                min: 8
+                minMessage: "El CIF / DNI introducido no es válido."
+        cp:
+            - Length:
+                min: 5
+                minMessage: "El código postal introducido no es válido."
+        poblacion:
+            - NotBlank:
+                message: "Debe introducir su población."
+        provincia:
+            - NotBlank:
+                message: "Debe introducir su provincia."
+        pais:
+            - NotBlank:
+                message: "Debe introducir su país."
+        telefono:
+            - Length:
+                min: 9
+                minMessage: "El teléfono introducido no es válido."
+        email:
+            - NotBlank:
+                message: "Debe introducir su email."
+            - Email:
+                message: "El email introducido no es un email válido."
+            - Length:
+                min: 3
+                minMessage: "El email introducido no es válido."
+        consulta:
+            - NotBlank:
+                message: "Debe introducir una consulta."

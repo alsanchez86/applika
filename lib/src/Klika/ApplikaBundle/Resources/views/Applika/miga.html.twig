@@ -1,0 +1,42 @@
+{% if miga|length > 1 %}
+	<p class="gris hidden-xs">
+	  	{% for modulo in miga %}
+	  		{% if not loop.last %}
+	  			{% if loop.first %}
+	  				<a href="{{ path ('applika_modulo', {'modulo_id': root.id, 'modulo': root.slug}) }}">{{modulo.nombre}}</a>
+	  			{% else %}
+	  				<a href="{{ path ('applika_modulo', {'modulo_id': modulo.id, 'modulo': modulo.slug}) }}">{{modulo.nombre}}</a>
+	  			{% endif %}
+	  			&nbsp;>&nbsp;
+	  		{% else %}
+	  			{% if ficha %}
+	  				<a href="{{ path ('applika_modulo', {'modulo_id': modulo.id, 'modulo': modulo.slug}) }}">{{modulo.nombre}}</a>
+	    			&nbsp;>&nbsp;
+
+	  				{% if anadir %}
+	    				añadir <span class="text-lowercase">{{modulo.entidad}}</span>
+	    			{% else %}
+	    				{{ficha.nombre}}
+	    			{% endif %}
+	  			{% else %}
+	  				{{modulo.nombre}}
+	  			{% endif %}
+	  		{% endif %}
+	  	{% endfor %}
+	</p>
+{% else %}
+	{% if ficha %}
+	  	<p class="gris hidden-xs">
+	  		{% for modulo in miga %}
+	  			<a href="{{ path ('applika_modulo', {'modulo_id': modulo.id, 'modulo': modulo.slug}) }}">{{modulo.nombre}}</a>
+	    		&nbsp;>&nbsp;
+
+	  			{% if anadir %}
+	    			añadir <span class="text-lowercase">{{modulo.entidad}}</span>
+	    		{% else %}
+	    			{{ficha.nombre}}
+	    		{% endif %}
+	    	{% endfor %}
+	    </p>
+	{% endif %}
+{% endif %}

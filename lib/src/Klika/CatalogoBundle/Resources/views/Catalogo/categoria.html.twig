@@ -1,0 +1,27 @@
+{% extends 'KlikaCatalogoBundle::base.html.twig' %}
+
+{% block contenido_catalogo %}
+<section>
+  <header>
+    <h1>{{categoria.nombre}}</h1>
+  </header>
+
+  {{ render (controller ('KlikaCatalogoBundle:Catalogo:miga', {'categoria': categoria} )) }}
+
+  {% for articulo in articulos %}
+    {% if loop.index % 3 == 1 %}
+      <div class="articulos-row row">
+    {% endif %}
+
+    {{ include ('KlikaCatalogoBundle:Catalogo:articulo-detalle.html.twig', {'categoria' : categoria, 'articulo': articulo}) }}
+
+    {% if loop.index % 3 == 0 %}
+      </div>
+    {% elseif loop.last %}
+      </div>
+    {% endif %}
+  {% endfor %}
+
+  {{ render (controller ('KlikaCatalogoBundle:Catalogo:paginacion', {'categoria': categoria, 'limit': limit, 'pagina': pagina} )) }}
+</section>
+{% endblock %}

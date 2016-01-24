@@ -1,0 +1,11 @@
+{% if siguiente or anterior %}
+	<div class="clearfix hidden-xs">
+		{% if siguiente %}
+			<p class="pull-right"><a href="{{ path ('applika_ficha_editar', {'modulo_id': modulo.id, 'modulo': modulo.slug, 'ficha_id': siguiente.id, 'ficha': siguiente.slug}) }}">siguiente ></a></p>
+		{% endif %}
+
+		{% if anterior %}
+			<p class="pull-right" {% if siguiente %} style="margin-right: 20px;" {% endif %}><a href="{{ path ('applika_ficha_editar', {'modulo_id': modulo.id, 'modulo': modulo.slug, 'ficha_id': anterior.id, 'ficha': anterior.slug}) }}">< anterior</a></p>
+		{% endif %}
+	</div>
+{% endif %}

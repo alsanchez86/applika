@@ -1,0 +1,156 @@
+<!-- mídete -->
+<aside class="midete">
+    <header>
+      <h2>M&iacute;dete</h2>
+    </header>
+
+    <div class="row">
+      	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        	<p><span class="bold">Introduzca sus medidas:</span>&nbsp;(en cent&iacute;metros)</p>
+
+        	<form class="form-horizontal" role="form" action="javascript:seleccionarTalla ()">
+          		<!-- contorno de pecho -->
+          		<div class="form-group">
+            		<label for="pecho" class="col-sm-6 control-label">Contorno de pecho:</label>
+
+            		<div class="col-sm-4">
+              			<input id="pecho" type="text" class="form-control medida input-sm" data-toggle="popover" title="Contorno de pecho" data-content="<p>No se refiere a la talla de sujetador.</p><p>Utilice un sujetador sin relleno (el vestido ya tiene sujetador incorporado).</p><p>Brazos relajados a los lados.</p><p>Mida la parte más ancha del busto.</p>">
+            		</div>
+
+	            	<div class="hidden-xs col-sm-2">
+    	          		<label id="medida-label-pecho" class="medida-label" for="pecho">A</label>
+        	    	</div>
+          		</div>
+
+          		<!-- contorno de cintura -->
+          		<div class="form-group">
+            		<label for="cintura" class="col-sm-6 control-label">Contorno de cintura:</label>
+
+            		<div class="col-sm-4">
+              			<input id="cintura" type="text" class="form-control medida input-sm" data-toggle="popover" title="Contorno de cintura" data-content="<p>Encuentre la cintura natural.</p><p>Esta es la parte más estrecha de la cintura.</p><p>Normalmente aproximadamente 1inch (2,5cm) por encima del ombligo.</p><p>Mantenga la cinta un poco floja para mayor comodidad.</p>" disabled>
+            		</div>
+
+            		<div class="hidden-xs col-sm-2">
+              			<label id="medida-label-cintura" class="medida-label" for="cintura">B</label>
+            		</div>
+          		</div>
+
+          		<!-- contorno de cadera -->
+          		<div class="form-group">
+            		<label for="cadera" class="col-sm-6 control-label">Contorno de cadera:</label>
+
+            		<div class="col-sm-4">
+              			<input id="cadera" type="text" class="form-control medida input-sm" data-toggle="popover" title="Contorno de cadera" data-content="<p>Encuentre la parte más ancha de la cadera.</p><p>Normalmente alrededor de 7inch (18cm) debajo de la cintura natural.</p><p>La cinta debe rodear ambos huesos de la cadera.</p>" disabled>
+            		</div>
+
+            		<div class="hidden-xs col-sm-2">
+              			<label id="medida-label-cadera" class="medida-label" for="cadera">C</label>
+            		</div>
+          		</div>
+
+          		<!-- largo total -->
+          		<div class="form-group">
+            		<label for="largo-total" class="col-sm-6 control-label">Largo total:</label>
+
+            		<div class="col-sm-4">
+              			<input id="largo-total" type="text" class="form-control medida input-sm" data-toggle="popover" title="Largo total" data-content="<p>Permanezca en posición recta manteniendo los pies juntos.</p><p>Sin calzado.</p><p>Comience desde el agujero entre clavículas y mida verticalmente hasta el suelo.</p>" disabled>
+            		</div>
+
+            		<div class="hidden-xs col-sm-2">
+              			<label id="medida-label-largo-total" class="medida-label" for="largo-total">D</label>
+            		</div>
+          		</div>
+
+          		<!-- largo de falda -->
+          		<div class="form-group">
+            		<label for="largo-falda" class="col-sm-6 control-label">Largo de falda:</label>
+
+            		<div class="col-sm-4">
+              			<input id="largo-falda" type="text" class="form-control medida input-sm" data-toggle="popover" title="Largo de falda" data-content="<p>Permanezca en posición recta manteniendo los pies juntos.</p><p>Sin calzado.</p><p>Comience desde la cintura y mida verticalmente hasta el suelo.</p>" disabled>
+            		</div>
+
+            		<div class="hidden-xs col-sm-2">
+              			<label id="medida-label-largo-falda" class="medida-label" for="largo-falda">E</label>
+            		</div>
+          		</div>
+
+          		<!-- resultado -->
+          		<div class="form-group">
+            		<label for="resultado" class="col-sm-6 control-label bold">Su talla es la:</label>
+
+            		<div class="col-sm-4">
+              			<input id="resultado" type="text" class="resultado form-control input-sm" disabled>
+            		</div>
+          		</div>
+
+          		<!-- probar otra talla -->
+          		<br>
+          		<p class="bold">
+            		Probar otra talla&nbsp;
+            		<a class="talla-anterior" href="javascript:cambiaTalla (0)">&nbsp;</a>&nbsp;
+            		<a class="talla-siguiente" href="javascript:cambiaTalla (1)">&nbsp;</a>
+          		</p>
+
+          		<br>
+          		<p><span class="bold">Diferencia de la talla con sus medidas:</span></p>
+
+          		<!-- en pecho -->
+          		<div class="form-group">
+            		<label for="en-pecho" class="col-sm-6 control-label">En pecho:</label>
+
+            		<div class="col-sm-4">
+              			<input id="en-pecho" type="text" class="form-control input-sm" disabled>
+            		</div>
+          		</div>
+
+          		<!-- en cintura -->
+          		<div class="form-group">
+            		<label for="en-cintura" class="col-sm-6 control-label">En cintura:</label>
+
+            		<div class="col-sm-4">
+              			<input id="en-cintura" type="text" class="form-control input-sm" disabled>
+            		</div>
+          		</div>
+
+          		<!-- en cadera -->
+          		<div class="form-group">
+            		<label for="en-cadera" class="col-sm-6 control-label">En cadera:</label>
+
+            		<div class="col-sm-4">
+              			<input id="en-cadera" type="text" class="form-control input-sm" disabled>
+            		</div>
+          		</div>
+
+          		<!-- en largo total -->
+          		<div class="form-group">
+            		<label for="en-largo-total" class="col-sm-6 control-label">En largo total:</label>
+
+            		<div class="col-sm-4">
+              			<input id="en-largo-total" type="text" class="form-control input-sm" disabled>
+            		</div>
+          		</div>
+
+          		<!-- en largo de falda -->
+          		<div class="form-group">
+            		<label for="en-largo-falda" class="col-sm-6 control-label">En largo de falda:</label>
+
+            		<div class="col-sm-4">
+              			<input id="en-largo-falda" type="text" class="form-control input-sm" disabled>
+            		</div>
+          		</div>
+
+          		<p style="font-size: 12px;"><span class="bold">Nota:</span> considere que nuestro margen de costura es de más o menos 2 cm.</p>
+
+          		<div class="form-group">
+            		<div class="col-sm-10">
+              			<p><button type="submit" class="btn btn-sm">Seleccionar&nbsp;talla</button></p>
+            		</div>
+          		</div>
+        	</form>
+      	</div>
+
+      	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        	<p id="midete-dibujo"><img class="img-responsive img-responsive-center" src="{{ asset ('/bundles/klikastatic/imagenes/midete.png') }}"></p>
+      	</div>
+    </div>
+</aside>

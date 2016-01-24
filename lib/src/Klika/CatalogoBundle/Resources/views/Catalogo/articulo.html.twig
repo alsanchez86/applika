@@ -1,0 +1,217 @@
+{% extends 'KlikaCatalogoBundle::base.html.twig' %}
+
+{% block css %}
+{{ parent() }}
+
+<!-- color selector -->
+<link href="{{ asset('/bundles/klikastatic/lib/bootstrap/extra/colorselector/css/bootstrap-colorselector.css') }}" rel="stylesheet"/>
+
+<!-- owl -->
+<link rel="stylesheet" href="{{ asset('/bundles/klikastatic/lib/bootstrap/extra/owl/css/owl.carousel.css') }}">
+<link rel="stylesheet" href="{{ asset('/bundles/klikastatic/lib/bootstrap/extra/owl/css/owl.theme.css') }}">
+<link rel="stylesheet" href="{{ asset('/bundles/klikastatic/lib/bootstrap/extra/owl/css/owl.transitions.css') }}">
+
+<!-- image gallery -->
+<link rel="stylesheet" href="{{ asset('/bundles/klikastatic/lib/bootstrap/extra/image-gallery/css/bootstrap-image-gallery.min.css') }}">
+{% endblock %}
+
+{% block contenido_catalogo %}
+<article class="articulo">
+  {{ render (controller ('KlikaCatalogoBundle:Catalogo:miga', {'categoria': categoria, 'articulo': articulo} )) }}
+
+  <div class="row">
+    {% if articulo.path|length > 0 %}
+      <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+        <div id="miniaturas" class="miniaturas owl-carousel">
+          {% for item in articulo.path %}
+            {% set foto = constant ('DIR', articulo) ~ item.name ~ '.' ~ item.ext %}
+
+            <div class="item">
+              <a href="{{ asset(foto) }}" title="{{articulo.nombre}}" data-gallery>
+                <img src="{{ asset(foto) }}" alt="{{item.ext}}" onerror="sinImagen (event, '{{ asset ('/bundles/klikastatic/imagenes/sin-imagen.png') }}')">
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+    {% else %}
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    {% endif %}
+
+      <header>
+        <h1>{{articulo.nombre}}</h1>
+      </header>
+
+      <!-- <hr>
+      <p>Plugin rrss</p>
+      <hr>
+
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="border-right: 1px solid #DDD">
+          <p class="precio">625&nbsp;&euro;</p>
+
+          <p class="ahorro">
+            824&euro;&nbsp;|&nbsp;<span class="bold">Ahorro 99&euro;</span>
+          </p>
+        </div>
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <p class="descuento">Descuento del 20% en el envio</p>
+        </div>
+      </div>
+      <hr>
+
+      <form role="form" action="javascript:void (0)">
+        <div class="row">
+          <div class="col-xs-5 col-sm-4 col-md-4 col-lg-4">
+            <p>
+              <select id="tabla-de-color">
+                <option value="1" data-color="red">rojo</option>
+                <option value="2" data-color="orange" selected="selected">naranja</option>
+                <option value="3" data-color="blue">azul</option>
+              </select>
+            </p>
+          </div>
+
+          <div class="col-xs-7 col-sm-8 col-md-8 col-lg-8">
+            <p><a class="tabla" href="javascript:void (0)" data-toggle="modal" data-target="#modal-tabla-de-color">TABLA DE COLOR</a></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-5 col-sm-4 col-md-4 col-lg-4">
+            <p>
+              <select id="talla" class="form-control input-sm">
+                <option val="50">50</option>
+                <option val="52">52</option>
+                <option val="54">54</option>
+              </select>
+            </p>
+          </div>
+
+          <div class="col-xs-7 col-sm-8 col-md-8 col-lg-8">
+            <p><a class="tabla" href="javascript:void(0)" data-toggle="modal" data-target="#modal-tabla-de-tallas">TABLA DE TALLAS</a></p>
+          </div>
+        </div>
+      </form>
+      <br>
+
+      <p><a class="anadir-articulo" href="/">A&ntilde;adir&nbsp;a&nbsp;la&nbsp;cesta</a></p>
+      <p class="plazo">Plazo de env&iacute;o 3-6 d&iacute;as</p> -->
+
+      {% if articulo.texto %}
+        <p class="descripcion">{{articulo.texto|raw}}</p>
+      {% endif %}
+
+      {% if articulo.aviso %}
+        <p class="aviso">{{articulo.aviso}}</p>
+      {% endif %}
+
+      {{ render (controller ('KlikaCatalogoBundle:Catalogo:navegacion', {'categoria': categoria, 'articulo_id': articulo.id} )) }}
+    </div>
+  </div>
+  <hr>
+
+  {{ include ('KlikaCatalogoBundle:Catalogo:midete.html.twig') }}
+  {{ render (controller ('KlikaCatalogoBundle:Catalogo:relacionados', {'articulo_id': articulo.id} )) }}
+</article>
+
+<!-- Modals -->
+{{ include ('KlikaCatalogoBundle:Catalogo:modal-tabla-de-color.html.twig') }}
+{{ include ('KlikaCatalogoBundle:Catalogo:modal-tabla-de-tallas.html.twig') }}
+
+<!-- Image gallery -->
+{{ include ('KlikaCatalogoBundle:Catalogo:image-gallery.html.twig') }}
+{% endblock contenido_catalogo %}
+
+
+{% block js %}
+{{ parent() }}
+
+<!-- color selector -->
+<script src="{{ asset('/bundles/klikastatic/lib/bootstrap/extra/colorselector/js/bootstrap-colorselector.js') }}"></script>
+<!-- owl -->
+<script src="{{ asset('/bundles/klikastatic/lib/bootstrap/extra/owl/js/owl.carousel.min.js') }}"></script>
+<!-- image gallery -->
+<script src="{{ asset('/bundles/klikastatic/lib/bootstrap/extra/image-gallery/js/bootstrap-image-gallery.min.js') }}"></script>
+<!-- midete -->
+<script src="/bundles/klikastatic/lib/js/midete.js"></script>
+{% endblock %}
+
+{% block javascript %}
+{{ parent() }}
+
+<script>
+  $(document).ready (function () {
+
+    precarga ([
+                '/bundles/klikastatic/imagenes/talla-anterior-hover.png',
+                '/bundles/klikastatic/imagenes/talla-siguiente-hover.png',
+                '/bundles/klikastatic/imagenes/medida-label-hover.png'
+              ]);
+
+    medidaLabel ();
+    $('#tabla-de-color').colorselector ();
+    probador ();
+    activarMedidas ();
+    miniaturasOwl ();
+    relacionadosOwl ();
+  });
+
+
+function medidaLabel () {
+
+  $('.medida').focusin (function () {
+
+    var id    = $(this).attr ('id');
+    var label = $('#medida-label-' + id);
+    label.css ({background: 'url(\'/bundles/klikastatic/imagenes/medida-label-hover.png\') no-repeat top left'});
+
+  }).focusout (function () {
+
+    var id    = $(this).attr ('id');
+    var label = $('#medida-label-' + id);
+    label.css ({background: 'url(\'/bundles/klikastatic/imagenes/medida-label.png\') no-repeat top left'});
+  });
+}
+
+function activarMedidas () {
+
+  $('#pecho').keyup (function () {
+
+    var valor = parseFloat($(this).val ());
+    if (valor)  $('#cintura, #cadera, #largo-total, #largo-falda').removeAttr ('disabled');
+    else        $('#cintura, #cadera, #largo-total, #largo-falda').attr ('disabled', true);
+  });
+}
+
+function miniaturasOwl () {
+
+  $("#miniaturas").owlCarousel({
+
+    items:              1,
+    itemsDesktop :      [1140,  1],
+    itemsDesktopSmall : [940,   1],
+    itemsTablet:        [720,   1],
+    itemsMobile :       [720,   1],
+    lazyLoad : true,
+    autoPlay: 4000
+  });
+}
+
+function relacionadosOwl () {
+
+  $("#relacionados").owlCarousel({
+
+    items:              5,
+    itemsDesktop :      [1140, 5],
+    itemsDesktopSmall : [940, 3],
+    itemsTablet:        [720, 3],
+    itemsMobile :       false,
+    lazyLoad : true
+  });
+}
+</script>
+{% endblock javascript %}

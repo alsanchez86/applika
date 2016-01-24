@@ -1,0 +1,20 @@
+Klika\StaticBundle\Entity\Pais:
+    type: entity
+    table: paises
+    repositoryClass: Klika\StaticBundle\Entity\PaisRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        flag:
+            type: smallint
+            length: 6
+        codigo:
+            type: string
+            length: 2
+        nombre:
+            type: string
+            length: 100

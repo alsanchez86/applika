@@ -1,0 +1,19 @@
+inicio:
+    path:     /
+    defaults: { _controller: KlikaCatalogoBundle:Catalogo:inicio, limit: 6}
+
+inicio_inicio:
+    path:     /inicio/
+    defaults: { _controller: KlikaCatalogoBundle:Catalogo:inicio, limit: 6}
+    requirements:
+        url: .*/$
+
+categoria:
+    path:     /{categoria_id}/{categoria}/{pagina}/
+    defaults: { _controller: KlikaCatalogoBundle:Catalogo:categoria, limit: 6, pagina: 1}
+    requirements: {url: .*/$, categoria_id: \d+, pagina: \d+}
+
+articulo:
+    path:     /{categoria_id}/{categoria}/{articulo_id}/{articulo}/
+    defaults: { _controller: KlikaCatalogoBundle:Catalogo:articulo }
+    requirements: {url: .*/$, categoria_id: \d+, articulo_id: \d+}

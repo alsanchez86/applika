@@ -1,0 +1,47 @@
+{% extends 'KlikaCatalogoBundle::base.html.twig' %}
+
+{% block carousel %}
+<!-- <div id="carousel-inicio" class="carousel-inicio carousel slide hidden-xs" data-ride="carousel">
+    <ol class="carousel-indicators">
+    	<li data-target="#carousel-inicio" data-slide-to="0" class="active"></li>
+    </ol>
+
+    <div class="carousel-inner">
+    	<div class="item active">
+    		<img class="img-responsive img-responsive-max" src="{{ asset ('/bundles/klikastatic/imagenes/slider-1.jpg') }}" alt="">
+    	</div>
+    </div>
+
+    <a class="left carousel-control" href="#carousel-inicio" role="button" data-slide="prev"></a>
+    <a class="right carousel-control" href="#carousel-inicio" role="button" data-slide="next"></a>
+</div>
+
+<div class="carousel-bottom clearfix hidden-xs"></div> -->
+{% endblock %}
+
+{% block contenido_catalogo %}
+<section>
+	<header>
+    <h1>Art&iacute;culos&nbsp;destacados</h1>
+  </header>
+
+  {% for articulo in articulos %}
+    {% if loop.index % 3 == 1 %}
+      <div class="articulos-row row">
+    {% endif %}
+
+    {{ include ('KlikaCatalogoBundle:Catalogo:articulo-detalle.html.twig', {'categoria': articulo.categoria, 'articulo': articulo}) }}
+
+    {% if loop.index % 3 == 0 %}
+      </div>
+    {% else %}
+
+      {% if loop.last %}
+        </div>
+      {% endif %}
+
+    {% endif %}
+  {% endfor %}
+
+</section>
+{% endblock %}

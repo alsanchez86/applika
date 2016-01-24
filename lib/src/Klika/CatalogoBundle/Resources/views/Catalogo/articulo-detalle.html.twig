@@ -1,0 +1,19 @@
+<article class="detalle col-xs-12 col-sm-4 col-md-4 col-lg-4">
+	{% if articulo.path|length > 0 %}
+        {% set foto = '/contenidos/articulos/thumbnail/' ~ articulo.path [0]['name'] ~ '.' ~ articulo.path [0]['ext'] %}
+    {% else %}
+        {% set foto = asset ('/bundles/klikastatic/imagenes/sin-imagen.png') %}
+    {% endif %}
+
+	<p><a href="{{ path ('articulo', {'categoria_id': categoria.id, 'categoria': categoria.slug, 'articulo_id': articulo.id, 'articulo': articulo.slug}) }}"><img class="img-responsive img-responsive-max" src="{{foto}}" onerror="sinImagen (event, '{{ asset ('/bundles/klikastatic/imagenes/sin-imagen.png') }}')"></a></p>
+
+    <header>
+      <h2><a href="{{ path ('articulo', {'categoria_id': categoria.id, 'categoria': categoria.slug, 'articulo_id': articulo.id, 'articulo': articulo.slug}) }}">{{articulo.nombre}}</a></h2>
+    </header>
+
+    {% if articulo.entradilla %}
+   		<p>{{articulo.entradilla}}</p>
+   	{% endif %}
+
+   	<p class="precio-detalle">Precio:&nbsp;<span class="bold">625&nbsp;&euro;</span></p>
+</article>
