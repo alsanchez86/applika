@@ -1,0 +1,15 @@
+/lib/app/bootstrap.php.cache
+/lib/app/cache/*
+/lib/app/config/parameters.yml
+/lib/app/logs/*
+
+!/lib/app/cache/.gitkeep
+!/lib/app/logs/.gitkeep
+
+/lib/build/
+/lib/vendor/
+/lib/bin/
+/lib/composer.phar
+
+/contenidos
+/bundles
